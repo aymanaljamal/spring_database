@@ -3,11 +3,13 @@ import com.Spring.demo.model.Employee;
 import com.Spring.demo.model.Order;
 import com.Spring.demo.model.Product;
 import com.Spring.demo.repository.EmployeeRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.OneToMany;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Service
 public class EmployeeService {
     private final EmployeeRepository repo;
@@ -41,6 +43,7 @@ public class EmployeeService {
                 .map(Employee::getProducts)
                 .orElse(Collections.emptyList());
     }
+
     public List<Order> getApprovedOrders(Long employeeId) {
         return getEmployeeById(employeeId)
                 .map(Employee::getApprovedOrders)
