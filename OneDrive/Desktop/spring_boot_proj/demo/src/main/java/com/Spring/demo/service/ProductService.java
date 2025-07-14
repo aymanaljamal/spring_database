@@ -1,9 +1,12 @@
 package com.Spring.demo.service;
 import com.Spring.demo.model.Product;
 import com.Spring.demo.repository.ProductRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Service
 public class ProductService {
     private final ProductRepository repo;

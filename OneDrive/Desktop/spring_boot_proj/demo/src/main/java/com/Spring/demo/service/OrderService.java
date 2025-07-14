@@ -7,10 +7,11 @@ import com.Spring.demo.repository.CustomerRepository;
 import com.Spring.demo.repository.EmployeeRepository;
 import com.Spring.demo.repository.OrderRepository;
 import com.Spring.demo.repository.ProductRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Service
 public class OrderService {
     private final OrderRepository orderRepo;
